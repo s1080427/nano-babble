@@ -1,0 +1,16 @@
+@use "sass:map";
+
+// breakpointとmixin
+$breakpoints: (
+  "sp": "screen and (max-width: 767px)",
+  "tb": "screen and (min-width: 768px) and (max-width: 1024px)",
+  "pc": "screen and (min-width: 768px)" //768px以上（タブレット・PC）用の表示
+) !default;
+
+// メディアクエリ用のmixinを定義。デフォルト値はpc
+@mixin mq($breakpoint: pc) {
+  // map.get(マップ型変数, キー)で値を取得
+  @media #{map.get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
